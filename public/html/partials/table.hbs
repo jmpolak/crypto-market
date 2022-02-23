@@ -1,0 +1,23 @@
+ <ul class="people_list">
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Marketcap</th>
+    </tr>
+  </thead>
+  <tbody>
+   {{#each crypto}}
+    <tr>
+      <th scope="row">{{this.cmc_rank}}</th>
+      <td>{{this.name}}</td>
+      <td>{{fix this.quote.USD.price}}</td>
+      <td>{{fix this.quote.USD.market_cap}}</td>
+     
+    </tr>
+  {{/each}}
+    
+  </tbody>
+</table>
