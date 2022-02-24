@@ -8,6 +8,7 @@ async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(
     AppModule,
   );  
+  // app.setGlobalPrefix('cryptocurrency');
   app.setBaseViewsDir(join(__dirname, '..', 'public', "html" ));
   app.useStaticAssets(join(__dirname, '..', "public"));
   // app.useStaticAssets(join(__dirname, '..', 'public', "html"));
@@ -20,6 +21,16 @@ async function bootstrap() {
   hbs.registerHelper("dec", function(value, options)
   {
       return parseInt(value) - 1;
+  });
+
+  hbs.registerHelper("lser", function(value, options)
+  {
+    return value < 0
+  });
+
+  hbs.registerHelper("per", function(value, options)
+  {
+    return parseFloat(value).toFixed(2).toString() + "%"
   });
 
   hbs.registerHelper("fix", function(value, options)

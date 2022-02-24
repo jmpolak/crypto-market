@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Redirect } from '@nestjs/common';
 import { CryptocurrencyService } from './cryptocurrency.service';
 import { CreateCryptocurrencyDto } from './dto/create-cryptocurrency.dto';
 import { UpdateCryptocurrencyDto } from './dto/update-cryptocurrency.dto';
@@ -9,6 +9,6 @@ export class CryptocurrencyController {
 
   @Get()
   findAll() {
-    return "this.cryptocurrencyService.findAll()";
+    return "this.cryptocurrencyService.findAll(start);"
   }
 }

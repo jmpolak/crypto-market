@@ -3,19 +3,40 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Price</th>
+      <th scope="col">Name</th> 
       <th scope="col">Marketcap</th>
+      <th scope="col">Price</th>
+      <th scope="col">Volume (24h)</th>
+      <th scope="col">Change (1h)</th>
+      <th scope="col">Change (24h)</th>
+     
     </tr>
   </thead>
   <tbody>
    {{#each crypto}}
     <tr>
       <th scope="row">{{this.cmc_rank}}</th>
-      <td>{{this.name}}</td>
-      <td>{{fix this.quote.USD.price}}</td>
+      <td>{{this.name}}</td>  
       <td>{{fix this.quote.USD.market_cap}}</td>
-     
+      <td>{{fix this.quote.USD.price}}</td>
+      <td>{{fix this.quote.USD.volume_24h}}</td>
+      <td>{{fix this.circulating_supply}}</td>
+
+
+   
+    {{#if (lser this.quote.USD.percent_change_1h)}}
+    <td class="negative-change">{{per this.quote.USD.percent_change_1h}}</td>
+    {{else}}
+    <td class="positive-change">{{per this.quote.USD.percent_change_1h}}</td>
+    {{/if}}
+   
+
+     {{#if (lser this.quote.USD.percent_change_24h)}}
+      <td class="negative-change">{{per this.quote.USD.percent_change_24h}}</td>
+      {{else}}
+      <td class="positive-change">{{per this.quote.USD.percent_change_24h}}</td>
+      {{/if}}
+    
     </tr>
   {{/each}}
     

@@ -1,6 +1,7 @@
-import { Controller, Get, Query, Render } from '@nestjs/common';
+import { Controller, Get, ParseIntPipe, Query, Render, Res } from '@nestjs/common';
 import { AppService } from './app.service';
 import { CryptocurrencyService } from './cryptocurrency/cryptocurrency.service';
+import { ValidationPipe } from './validation.pipe';
 
 @Controller()
 export class AppController {
@@ -9,16 +10,17 @@ export class AppController {
     private readonly cryptocurrencyService: CryptocurrencyService
     ) {}
   
- 
+
   @Render("index")
   @Get()
-  async getPage(@Query("page") page:string){
-    // Protect -> and number validation
-    
-    if(page){
-      const start = parseInt(page) * 100 - 99
-      return {crypto:await this.cryptocurrencyService.findAll(start.toString()), pagePrevious: parseInt(page) - 1, pageNext : parseInt(page) + 1  }
+  async getPage(@Query("page", ValidationPipe) page:number, @Res() res): Promise<Object>{ 
+    if(isNaN(page) || page < 1){
+      return {crypto:await this.cryptocurrencyService.findAll(1), pagePrevious: page - 1, pageNext : page + 1  }
     }
-    return {crypto:await this.cryptocurrencyService.findAll("1"), pagePrevious: false, pageNext : 2 }
+    else{
+      const start: number = page * 100 - 99
+      return {crypto:await this.cryptocurrencyService.findAll(start), pagePrevious: page - 1, pageNext : page + 1  }
   }
+  }     
 }
+
