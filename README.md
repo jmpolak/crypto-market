@@ -43,7 +43,7 @@ $ npm run test:cov
 ```
 
 ## Screenshots
-![alt text](https://github.com/jmpolak/crypto-market/screenshot/Screenshot.png)
+![alt text](https://github.com/jmpolak/crypto-market/blob/master/screenshot/Screenshot.png)
 
 ## License
 
