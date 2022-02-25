@@ -4,7 +4,11 @@ import { ArgumentMetadata, BadRequestException, Injectable, PipeTransform } from
 export class ValidationPipe implements PipeTransform {
   transform(value: string, metadata: ArgumentMetadata):number {
     try{
-      return parseInt(value);
+      const newValue: number = parseInt(value)  
+      if(isNaN(newValue) || newValue < 1){
+        return 1
+      }
+      return newValue
     }
     catch(e){
       throw new BadRequestException()

@@ -1,7 +1,7 @@
 
 ## Description
 
-CoinMarket is a website built with Nestjs. It displays cryptocurrency prices using coinmarketcap.com API.
+Coinmarket is a website built with Nestjs. It displays cryptocurrency prices using coinmarketcap.com API.
 
 ## Installation
 
@@ -29,22 +29,8 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
 
 ## Screenshots
 ![alt text](https://github.com/jmpolak/crypto-market/blob/master/screenshot/Screenshot.png)
 
-## License
-
-Nest is [MIT licensed](LICENSE).
